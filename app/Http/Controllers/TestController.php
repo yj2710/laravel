@@ -1,15 +1,15 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: ABM
+ * UserQO: ABM
  * Date: 2019/10/29
  * Time: 14:39
  */
 
 namespace App\Http\Controllers;
 
+use App\Entities\QueryObject\User\UserQO;
 use App\Services\Interfaces\IUserService;
-use App\Facades\Rabbitmq;
 
 class TestController extends Controller
 {
@@ -22,10 +22,16 @@ class TestController extends Controller
 
     public function test()
     {
-        Rabbitmq::product('rabbit', 'Hello ttttt!', true);
-        die;
-        $user = $this->userService->getUser();
+//        Rabbitmq::product('rabbit', 'Hello ttttt!', true);
+//        die;
+        $users = $this->userService->getUser();
 
-        dd($user->toArray());
+        foreach ($users as  $user){
+            /** @var UserQO $user */
+//            dump($user->username);
+            dump($user->idCode);
+        }
+//        return $user;
+//        dd($user->toArray());
     }
 }

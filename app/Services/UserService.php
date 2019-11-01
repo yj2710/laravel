@@ -11,6 +11,6 @@ class UserService implements IUserService
 
     public function getUser()
     {
-        return User::query()->first();
+        return User::query()->get();
     }
 }
